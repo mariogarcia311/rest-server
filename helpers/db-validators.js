@@ -16,9 +16,11 @@ const emailExiste = async (correo = '') => {
 }
 const usarioIDExiste = async (id ) => {
     const existeUser = await usuario.findById( id )
-    console.log(existeUser)
     if (!existeUser) {
         throw new Error (`El ID ${id } no existe`)
+    }
+    if (!existeUser.estado) {
+        throw new Error (`El ID ${id } no existe -status`)
     }
 }
 module.exports = {
